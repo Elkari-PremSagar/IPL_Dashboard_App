@@ -3,6 +3,7 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
+import PieChartComponent from '../PieChartComponent'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import './index.css'
@@ -28,6 +29,11 @@ class TeamMatches extends Component {
 
   componentDidMount() {
     this.getTeamMatchesData()
+  }
+
+  onClickBack = () => {
+    const {history} = this.props
+    history.push('/')
   }
 
   getTeamMatchesData = async () => {
@@ -66,13 +72,48 @@ class TeamMatches extends Component {
     })
   }
 
+  getChartData = () => {
+    const {recentMatches} = this.state
+
+    let wins = 0
+    let losses = 0
+    let draws = 0
+
+    recentMatches.forEach(match => {
+      if (match.matchStatus === 'Won') {
+        wins += 1
+      } else if (match.matchStatus === 'Lost') {
+        losses += 1
+      } else {
+        draws += 1
+      }
+    })
+
+    return [
+      {name: 'Won', value: wins, color: '#18ed66'},
+      {name: 'Lost', value: losses, color: '#e31a1a'},
+      {name: 'Draw', value: draws, color: '#ffffff'},
+    ]
+  }
+
   renderTeamMatches = () => {
     const {teamBannerUrl, latestMatch, recentMatches} = this.state
 
     return (
       <>
+        <button
+          type="button"
+          className="back-button"
+          onClick={this.onClickBack}
+        >
+          ← Back
+        </button>
+
         <img src={teamBannerUrl} alt="team banner" className="team-banner" />
+
         <LatestMatch matchDetails={latestMatch} />
+        <PieChartComponent data={this.getChartData()} />
+
         <ul className="recent-matches-list">
           {recentMatches.map(match => (
             <MatchCard key={match.id} matchDetails={match} />

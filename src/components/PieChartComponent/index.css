@@ -1,0 +1,13 @@
+.pie-chart-container {
+  background-color: #0f172a;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 24px 0;
+}
+
+.chart-heading {
+  color: #ffffff;
+  font-family: 'Bree Serif';
+  text-align: center;
+  margin-bottom: 16px;
+}
