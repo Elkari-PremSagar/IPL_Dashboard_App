@@ -1,0 +1,56 @@
+/* Write your CSS here */
+.latest-match-container {
+  background-color: #0f172a;
+  padding: 20px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Bree Serif';
+  margin-bottom: 24px;
+}
+
+.latest-match-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.latest-match-info {
+  max-width: 60%;
+}
+
+.competing-team {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.match-date,
+.match-venue,
+.match-result {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.competing-team-logo {
+  width: 120px;
+}
+
+.separator {
+  border: 1px solid #475569;
+  margin: 16px 0;
+}
+
+.latest-match-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.label {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.value {
+  font-size: 14px;
+  color: #ffffff;
+}
